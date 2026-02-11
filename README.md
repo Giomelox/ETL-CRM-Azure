@@ -1,5 +1,8 @@
 # ETL-CRM-Azure
 
+
+# Criação e configuração de serviços
+
 Primeiramente vamos criar um grupo de recursos no Azure, após inserir o nome escolhido para o grupo de recursos, clique em 'Review + Create'
 <img width="996" height="380" alt="image" src="https://github.com/user-attachments/assets/0c9307ba-1444-48fa-b9f5-28429df563b4" />
 
@@ -43,4 +46,28 @@ Agora vamos criar nosso Azure Synapse Analytics, configure assim:
 
 <img width="1187" height="883" alt="image" src="https://github.com/user-attachments/assets/2b97c6c1-c4a8-4a10-8f30-db9d97d318e8" />
 
+## Azure Databricks
 
+Pesquise pelo serviço 'Azure Databricks' e crie um serviço com as seguintes configurações:
+
+<img width="1650" height="662" alt="image" src="https://github.com/user-attachments/assets/1cd06d5a-15ce-47b7-862d-737dede184a7" />
+
+<img width="913" height="755" alt="image" src="https://github.com/user-attachments/assets/b45831b3-1581-4d8d-9700-6b0d9791051a" />
+
+Clique em 'Review + Create'
+
+
+
+# Criando um ETL no ADF
+
+Navegue até seu serviço do azure data factory criado e clique em 'launch studio', isso abrirá o serviço em outra página.
+
+<img width="1649" height="637" alt="image" src="https://github.com/user-attachments/assets/4b4627e7-92ad-4b66-bb32-33cd1569e538" />
+
+Na página aberta, você verá o Hub do ADF, clique em 'New' e 'Pipeline'
+
+<img width="1875" height="626" alt="image" src="https://github.com/user-attachments/assets/9dc0d78e-fa0b-4b85-96f1-0ae51911d22f" />
+
+Você verá uma tela de recursos disponíveis, clique nos 3 pontinhos do pipeline criado e clique em 'Rename' para alterar o nome para o desejado.
+
+<img width="267" height="328" alt="image" src="https://github.com/user-attachments/assets/917e3365-b357-4be8-8beb-3b01803598ce" />
