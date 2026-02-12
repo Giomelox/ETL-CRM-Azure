@@ -107,11 +107,45 @@ Clique em 'Create'
 
 Feito isso, abra sua janela que está o databricks (ou abra novamente caso tenha fechado) e clique na seção 'Compute' e crie um com as mesmas configurações abaixo:
 
-<img width="1863" height="945" alt="image" src="https://github.com/user-attachments/assets/37ea4ee5-0387-471c-8f1a-1a653b7569fb" />
+<img width="1661" height="907" alt="image" src="https://github.com/user-attachments/assets/0891ef24-52ec-4341-9226-f0d2458b714a" />
+
 
 Após isso, clique na seção 'Workspace', em seguida, Clique em 'Create' e depois 'Notebook' no canto superior direito, e após a criação, altere o nome do notebook para o desejado.
 
 <img width="1861" height="667" alt="image" src="https://github.com/user-attachments/assets/7e7766af-bd35-4cfb-9f2c-33ade1422a94" />
+
+
+Com o notebook criado, vamos clicar na seção 'Connect' e selecionar o cluster criado no passo anterior
+
+<img width="1674" height="439" alt="image" src="https://github.com/user-attachments/assets/dfe95540-e2fd-4435-b0b0-8f9777f27250" />
+
+
+Com o cluster conectado ao nosso notebook, vamos rodar um código simples em pyspark para conferir a funcionalidade do sistema
+
+A estrutura do código é simples, adapte para seu ambiente do azure:
+
+''''
+token_storage_account = 'SEU STORAGE ACCOUNT TOKEN!!'
+
+nome_storage_account = 'stfilescrm'
+nome_container = 'bronze'
+nome_subpasta = 'parquet-files'
+
+bronze_path = f'abfss://{nome_container}@{nome_storage_account}.dfs.core.windows.net/{nome_subpasta}/'
+
+spark.conf.set(
+    'fs.azure.account.key.stfilescrm.dfs.core.windows.net',
+    token_storage_account
+)
+
+df = spark.read.parquet(
+    bronze_path
+).dropna()
+
+df.show()
+''''
+
+<img width="1647" height="890" alt="image" src="https://github.com/user-attachments/assets/af303464-d499-450e-904d-0ee1c13e2acc" />
 
 
 
