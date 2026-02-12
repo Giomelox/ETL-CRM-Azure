@@ -99,7 +99,7 @@ Clique no componente adicionado, e na seção de configurações do componente, 
 
 Feito isso, vamos para a aba 'Azure Databricks' e na opção de 'databricks linked services', clicar no botão de '+ New', configure de acordo com as imagens abaixo:
 
-<img width="628" height="812" alt="image" src="https://github.com/user-attachments/assets/ebd37e25-8c44-4918-a272-d936bf18c6de" />
+<img width="625" height="915" alt="image" src="https://github.com/user-attachments/assets/a255ea42-e82d-47ac-8f05-4ca40675df65" />
 
 <img width="581" height="204" alt="image" src="https://github.com/user-attachments/assets/6aec4481-c85f-4e1d-8bb9-deda0f2d3aa6" />
 
