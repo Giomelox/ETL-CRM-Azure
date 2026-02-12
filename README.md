@@ -199,10 +199,3 @@ Feito isso, clique em 'Publish All' para publicar e salvar as alterações feita
 <img width="1828" height="355" alt="image" src="https://github.com/user-attachments/assets/6e02f952-4cba-45cd-bd1a-5c08cc7b875f" />
 
 Com o passo anterior funcionando corretamente, está na hora de criarmos um arquivo dos dados tratados na fase anterior e adicioná-lo ao container 'silver' do nosso modelo medalhão.
-
-Ainda no ADF Hub, abra a seção 'Move and transform' e arraste o serviço de 'copy data' para o editor, após isso, conecte ele ao serviço de notebook.
-
-<img width="1453" height="447" alt="image" src="https://github.com/user-attachments/assets/4bcfbbe6-b327-4a37-aeb2-638806d60cda" />
-
-Clique no serviço de 'Copy data' adicionado e nas configurações dele, na aba 'General', altere o nome para o desejado.
-Agora clique em 
