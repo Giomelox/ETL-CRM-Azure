@@ -56,7 +56,23 @@ Pesquise pelo serviço 'Azure Databricks' e crie um serviço com as seguintes co
 
 Clique em 'Review + Create'
 
+A criação do workspace pode levar alguns minutos. Após a criação, clique em 'Properties' e copie a 'Workspace URL' do seu databricks, cole-a em outra aba do navegador
 
+<img width="1625" height="587" alt="image" src="https://github.com/user-attachments/assets/cb682e93-ad84-4213-a191-3477b4f1c88f" />
+
+Feito isso, vá no canto superior direito e clique em 'Settings'
+
+<img width="238" height="399" alt="image" src="https://github.com/user-attachments/assets/f8170eed-2ed2-4132-8542-b54c2e66c6e4" />
+
+E então navegue até a área 'Developer'
+
+<img width="1604" height="519" alt="image" src="https://github.com/user-attachments/assets/b9c1cbd5-4914-4c36-8e7b-d40c27963bf9" />
+
+Clique em 'Manage' na parte de 'Access Token' e clique em 'Generate new token'
+
+<img width="1626" height="515" alt="image" src="https://github.com/user-attachments/assets/ec91774c-74e4-4fdf-854c-f0d7f401c43e" />
+
+## Copie o token gerado, pois ele será usado na etapa posterior, e você não poderá pegar este token novamente!!
 
 # Criando um ETL no ADF
 
@@ -66,8 +82,38 @@ Navegue até seu serviço do azure data factory criado e clique em 'launch studi
 
 Na página aberta, você verá o Hub do ADF, clique em 'New' e 'Pipeline'
 
-<img width="1875" height="626" alt="image" src="https://github.com/user-attachments/assets/9dc0d78e-fa0b-4b85-96f1-0ae51911d22f" />
+<img width="1843" height="373" alt="image" src="https://github.com/user-attachments/assets/f050c199-8d91-4053-9619-ca50dd7bf9d4" />
+
 
 Você verá uma tela de recursos disponíveis, clique nos 3 pontinhos do pipeline criado e clique em 'Rename' para alterar o nome para o desejado.
 
-<img width="267" height="328" alt="image" src="https://github.com/user-attachments/assets/917e3365-b357-4be8-8beb-3b01803598ce" />
+<img width="293" height="286" alt="image" src="https://github.com/user-attachments/assets/62508f72-f07a-4805-8405-f99304f635aa" />
+
+Na janela de 'Activities', expanda a seção 'databricks' e mova o componente 'notebook' para a área de edição
+
+<img width="1821" height="688" alt="image" src="https://github.com/user-attachments/assets/590cc18c-74d4-4dc7-b232-47a8e5f1d3d5" />
+
+Clique no componente adicionado, e na seção de configurações do componente, altere o nome para o desejado
+
+<img width="1206" height="836" alt="image" src="https://github.com/user-attachments/assets/5ed48e4f-cf56-4f0b-b882-fbedbdcf695a" />
+
+Feito isso, vamos para a aba 'Azure Databricks' e na opção de 'databricks linked services', clicar no botão de '+ New', configure de acordo com as imagens abaixo:
+
+<img width="628" height="812" alt="image" src="https://github.com/user-attachments/assets/ebd37e25-8c44-4918-a272-d936bf18c6de" />
+
+<img width="581" height="204" alt="image" src="https://github.com/user-attachments/assets/6aec4481-c85f-4e1d-8bb9-deda0f2d3aa6" />
+
+Clique em 'Create'
+
+Feito isso, abra sua janela que está o databricks (ou abra novamente caso tenha fechado) e clique na seção 'Compute' e crie um com as mesmas configurações abaixo:
+
+<img width="1863" height="945" alt="image" src="https://github.com/user-attachments/assets/37ea4ee5-0387-471c-8f1a-1a653b7569fb" />
+
+Após isso, clique na seção 'Workspace', em seguida, Clique em 'Create' e depois 'Notebook' no canto superior direito, e após a criação, altere o nome do notebook para o desejado.
+
+<img width="1861" height="667" alt="image" src="https://github.com/user-attachments/assets/7e7766af-bd35-4cfb-9f2c-33ade1422a94" />
+
+
+
+
+
