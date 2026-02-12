@@ -124,7 +124,8 @@ Com o notebook criado, vamos clicar na seção 'Connect' e selecionar o cluster 
 <img width="1674" height="439" alt="image" src="https://github.com/user-attachments/assets/dfe95540-e2fd-4435-b0b0-8f9777f27250" />
 
 
-Com o cluster conectado ao nosso notebook, vamos rodar um código simples em pyspark para conferir a funcionalidade do sistema
+Com o cluster conectado ao nosso notebook, vamos rodar um código simples em pyspark para conferir a funcionalidade do sistema, cole o código abaixo no ambiente do notebook e execute,
+após a execução, vá até o seu 'storage account' no Azure e na camada silver, e verifique se o arquivo foi adicionado com sucesso.
 
 A estrutura do código é simples, adapte para seu ambiente do azure:
 
@@ -188,8 +189,6 @@ dbutils.notebook.exit({
 
 
 `````
-
-<img width="1647" height="890" alt="image" src="https://github.com/user-attachments/assets/af303464-d499-450e-904d-0ee1c13e2acc" />
 
 Agora voltaremos à nossa aba do navegador onde está o Azure DataFactory, vamos clicar na aba 'Settings' e selecionar nosso notebook criado no passo anterior
 
