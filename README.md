@@ -25,13 +25,17 @@ Após isso, crie um container pra camada bronze, silver e gold
 
 <img width="432" height="355" alt="image" src="https://github.com/user-attachments/assets/4246f0e2-903d-4013-8961-52475a67bb0b" />
 
-Clique no container 'Bronze' criado e crie um repositório chamado 'parquet-files'
+Clique no container 'Bronze' criado e crie um diretório chamado 'parquet-files'
 
 <img width="289" height="915" alt="image" src="https://github.com/user-attachments/assets/4dc4bf32-4321-4bae-a741-800544365b43" />
 
 Selecione o diretório 'parquet-files' criado, e clique em 'upload' para fazer o upload do arquivo '0000.parquet' disponibilizado neste repositório
 
 <img width="1651" height="348" alt="image" src="https://github.com/user-attachments/assets/c1a1bb5d-1375-48aa-9724-55743bc53e45" />
+
+Agora vamos no container 'Silver' e crie um diretório chamado 'parquet-processados'
+
+<img width="1683" height="402" alt="image" src="https://github.com/user-attachments/assets/210fb361-4c64-4e11-8496-c50ee741e287" />
 
 Agora vamos criar o nosso azure data factory, vamos focar nas configurações básicas também para este serviço:
 
@@ -126,14 +130,34 @@ A estrutura do código é simples, adapte para seu ambiente do azure:
 
 `````
 
-token_storage_account = 'SEU STORAGE ACCOUNT TOKEN!!'
+from pyspark.sql.functions import current_timestamp, lit
+from datetime import datetime
+import uuid
+
+token_storage_account = 'SEU STORAGE ACCOUNT TOKEN'
+
+data_hora = datetime.now().strftime('%Y%m%d_%H%M%S')
+id_unico = str(uuid.uuid4())[:8]
 
 nome_storage_account = 'stfilescrm'
-nome_container = 'bronze'
-nome_subpasta = 'parquet-files'
 
-bronze_path = f'abfss://{nome_container}@{nome_storage_account}.dfs.core.windows.net/{nome_subpasta}/'
+# Variáveis da camada bronze
+nome_container_bronze = 'bronze'
+nome_subpasta_bronze = 'parquet-files'
+nome_arquivo_bronze = '0000.parquet'
 
+# Variáveis da camada silver
+nome_container_silver = 'silver'
+nome_subpasta_silver = 'parquet-processados'
+nome_arquivo_silver = f'CRM_processados_{data_hora}_{id_unico}.parquet'
+
+# Caminho para a camada bronze
+bronze_path = f'abfss://{nome_container_bronze}@{nome_storage_account}.dfs.core.windows.net/{nome_subpasta_bronze}/{nome_arquivo_bronze}'
+
+# Caminho para a camada silver
+silver_path = f'abfss://{nome_container_silver}@{nome_storage_account}.dfs.core.windows.net/{nome_subpasta_silver}/{nome_arquivo_silver}'
+
+# Leitura e processamento da Camada Bronze -> Silver
 spark.conf.set(
     'fs.azure.account.key.stfilescrm.dfs.core.windows.net',
     token_storage_account
@@ -143,17 +167,43 @@ df = spark.read.parquet(
     bronze_path
 ).dropna()
 
-df.show()
+# Processamento adicional para rastreamento da camada
+
+df_silver = df.withColumn('data_processamento', current_timestamp()) \
+             .withColumn('camada', lit('silver'))
+
+df_silver.coalesce(1).write \
+    .mode('overwrite') \
+    .format('parquet') \
+    .option('compression', 'snappy') \
+    .save(silver_path)
+
+dbutils.notebook.exit({
+    'status': 'success',
+    'silver_path': silver_path,
+    'arquivo': nome_arquivo_silver,
+    'registros': df_silver.count(),
+    'mensagem': 'Dados salvos na camada Silver'
+})
+
 
 `````
 
 <img width="1647" height="890" alt="image" src="https://github.com/user-attachments/assets/af303464-d499-450e-904d-0ee1c13e2acc" />
 
-
 Agora voltaremos à nossa aba do navegador onde está o Azure DataFactory, vamos clicar na aba 'Settings' e selecionar nosso notebook criado no passo anterior
 
 <img width="1520" height="851" alt="image" src="https://github.com/user-attachments/assets/c1387321-1c06-4427-adee-e1462c7985d7" />
 
-Feito isso, clique em 'Publish All' para publicar e salvar as alterações feitas, e para testar se está tudo funcionando corretamente, após salvar clique em 'Add Trigger' -> 'Trigger Now'
+Feito isso, clique em 'Publish All' para publicar e salvar as alterações feitas. Para testar se está tudo funcionando corretamente, após salvar clique em 'Add Trigger' -> 'Trigger Now'
 
 <img width="1828" height="355" alt="image" src="https://github.com/user-attachments/assets/6e02f952-4cba-45cd-bd1a-5c08cc7b875f" />
+
+Com o passo anterior funcionando corretamente, está na hora de criarmos um arquivo dos dados tratados na fase anterior e adicioná-lo ao container 'silver' do nosso modelo medalhão.
+
+Ainda no ADF Hub, abra a seção 'Move and transform' e arraste o serviço de 'copy data' para o editor, após isso, conecte ele ao serviço de notebook.
+
+<img width="1453" height="447" alt="image" src="https://github.com/user-attachments/assets/4bcfbbe6-b327-4a37-aeb2-638806d60cda" />
+
+Clique no serviço de 'Copy data' adicionado e nas configurações dele, na aba 'General', altere o nome para o desejado.
+Agora clique em 
