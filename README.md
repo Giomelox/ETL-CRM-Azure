@@ -124,7 +124,8 @@ Com o cluster conectado ao nosso notebook, vamos rodar um código simples em pys
 
 A estrutura do código é simples, adapte para seu ambiente do azure:
 
-''''
+`````
+
 token_storage_account = 'SEU STORAGE ACCOUNT TOKEN!!'
 
 nome_storage_account = 'stfilescrm'
@@ -143,7 +144,8 @@ df = spark.read.parquet(
 ).dropna()
 
 df.show()
-''''
+
+`````
 
 <img width="1647" height="890" alt="image" src="https://github.com/user-attachments/assets/af303464-d499-450e-904d-0ee1c13e2acc" />
 
