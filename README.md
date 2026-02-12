@@ -152,6 +152,6 @@ Agora voltaremos à nossa aba do navegador onde está o Azure DataFactory, vamos
 
 <img width="1520" height="851" alt="image" src="https://github.com/user-attachments/assets/c1387321-1c06-4427-adee-e1462c7985d7" />
 
-Feito isso, clique em 'Publish All' para publicar e salvar as alterações feitas
+Feito isso, clique em 'Publish All' para publicar e salvar as alterações feitas, e para testar se está tudo funcionando corretamente, após salvar clique em 'Add Trigger' -> 'Trigger Now'
 
 <img width="1828" height="355" alt="image" src="https://github.com/user-attachments/assets/6e02f952-4cba-45cd-bd1a-5c08cc7b875f" />
