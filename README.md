@@ -198,4 +198,17 @@ Feito isso, clique em 'Publish All' para publicar e salvar as alterações feita
 
 <img width="1828" height="355" alt="image" src="https://github.com/user-attachments/assets/6e02f952-4cba-45cd-bd1a-5c08cc7b875f" />
 
-Com o passo anterior funcionando corretamente, está na hora de criarmos um arquivo dos dados tratados na fase anterior e adicioná-lo ao container 'silver' do nosso modelo medalhão.
+## Azure Synapse
+
+Agora vamos criar nosso ambiente synapse, mantenha as configurações iguais às da imagem
+
+<img width="1626" height="890" alt="image" src="https://github.com/user-attachments/assets/ebb52af0-551e-4aba-8235-c77e9f39eae6" />
+
+<img width="1650" height="888" alt="image" src="https://github.com/user-attachments/assets/980c3357-453b-409b-b929-809d65c16b0f" />
+
+Feito isso, vamos voltar à nossa tela do ADF Hub e expandir a seção 'Synapse', e arrastar o componente 'Notebook'. Então iremos conectar ao nó de notebook do databricks em caso de sucesso.
+Em seguida escolha um nome para o serviço, e navegue até a aba 'Azure Synapse Analytics (Artifacts)', e clique em '+ New'
+
+<img width="1524" height="849" alt="image" src="https://github.com/user-attachments/assets/794a1f7e-9a65-4d6a-bebe-5d5440cae2ae" />
+
+
