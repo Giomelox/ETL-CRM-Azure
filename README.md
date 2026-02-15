@@ -1,6 +1,3 @@
-senha 1234567G!
-
-
 # ETL-CRM-Azure
 
 
